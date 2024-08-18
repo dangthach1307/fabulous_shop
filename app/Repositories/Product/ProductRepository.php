@@ -19,4 +19,10 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             ->where('tag', $product->tag)
             ->where('id', '!=', $product->id)->limit($limit)->get();
     }
+
+    public function getFeaturedProducts($limit = 10)
+    {
+        return $this->model->where('featured', true)->where('status', 1)->limit($limit)->get();
+    }
+
 }

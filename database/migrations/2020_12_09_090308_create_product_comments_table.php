@@ -19,7 +19,7 @@ class CreateProductCommentsTable extends Migration
             $table->unsignedBigInteger('product_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('email');
-            $table->string('name');
+            $table->string('nickname');
             $table->string('messages');
             $table->integer('rating')->unsigned();
             $table->tinyInteger('status')->default(1);

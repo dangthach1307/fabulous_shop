@@ -4,6 +4,8 @@ namespace App\Repositories\Product;
 
 use App\Repositories\RepositoryInterface;
 
-interface ProductRepositoryInterface extends RepositoryInterface{
+interface ProductRepositoryInterface extends RepositoryInterface
+{
     public function getRelatedProducts($product, $limit = 10);
+    public function getFeaturedProducts();
 }

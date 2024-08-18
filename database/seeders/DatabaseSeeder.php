@@ -139,6 +139,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'TRAVEL',
                 'slug' => 'travel',
+                'parent_id'=>0,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'image' => 'category-1.jpg',
                 'meta_title' => 'TRAVEL',
@@ -150,6 +151,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'CodeLeanON',
                 'slug' => 'codeleanon',
+                'parent_id'=>0,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'image' => 'category-2.jpg',
                 'meta_title' => 'CodeLeanON',
@@ -161,6 +163,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'FOOD',
                 'slug' => 'food',
+                'parent_id'=>0,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 'image' => 'category-3.jpg',
                 'meta_title' => 'FOOD',
@@ -179,7 +182,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Pure Pineapple',
                 'slug' => 'pure-pineapple',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor sum dolor sit amet, consectetur adipisicing elit, sed do mod tempor',
-                'content' => '',
+                'content' => '<div class="row"><div class="col-lg-7"><h5>Introduction</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacommodo consequat. Duis aute irure dolor in </p><h5>Features</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacommodo consequat. Duis aute irure dolor in </p></div><div class="col-lg-5"><div class="product-full"><img class="img-responsive" src="{{ asset("front/images/products/".$product->productImages[0]->path) }}" alt="" /></div></div></div>',
                 'price' => 62000,
                 'qty' => 20,
                 'discount' => 20,
@@ -194,7 +197,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Guangzhou sweater',
                 'slug' => 'guangzhou-sweater',
                 'description' => null,
-                'content' => null,
+                'content' => '<div class="row"><div class="col-lg-7"><h5>Introduction</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacommodo consequat. Duis aute irure dolor in </p><h5>Features</h5><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacommodo consequat. Duis aute irure dolor in </p></div><div class="col-lg-5"><div class="product-full"><img class="img-responsive" src="{{ asset("front/images/products/".$product->productImages[0]->path) }}" alt="" /></div></div></div>',
                 'price' => 35,
                 'qty' => 20,
                 'discount' => 13,

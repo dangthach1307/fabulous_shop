@@ -14,10 +14,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <ul>
-                        <li class="home"> <a href="index.html" title="Go to Home Page">Home</a> <span>/</span> </li>
-                        <li><a href="shop_grid.html" title="">Clutches</a> <span>/ </span> </li>
-                        <li><a href="shop_grid.html" title="">Bucket Bag</a> <span>/</span> </li>
-                        <li> <strong>Lorem ipsum dolor sit amet</strong> </li>
+                        <li class="home"> <a href="{{ route('home') }}" title="Go to Home Page">Home</a> <span>/</span> </li>
+                        <li> <strong>{{ $product->name }}</strong> </li>
                     </ul>
                 </div>
             </div>

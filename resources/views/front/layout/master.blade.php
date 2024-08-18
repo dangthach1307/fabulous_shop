@@ -386,8 +386,8 @@
                                 <div class="mm-toggle"><i class="fa fa-align-justify"></i></div>
                             </div>
                             <!-- Header Logo -->
-                            <div class="logo"> <a title="eCommerce" href="index.html"><img class="img-responsive"
-                                        alt="eCommerce" src="images/logo.png"> </a> </div>
+                            <div class="logo"> <a title="eCommerce" href="{{ route('home') }}"><img class="img-responsive"
+                                        alt="eCommerce" src="{{ asset('front/images/logo.png') }}"> </a> </div>
                             <!-- End Header Logo -->
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
