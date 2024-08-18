@@ -1003,7 +1003,7 @@ ul#cart-sidebar {
 background:#f6f6f6
 }
 .jtv-btn-remove {
-	background-image: url(../images/btn_remove.png);
+	background-image: url(../front/images/btn_remove.png);
 	margin: 0px 0 0 5px;
 }
 .jtv-btn-remove:hover, .jtv-btn-remove:focus {
@@ -4177,7 +4177,7 @@ figure.effect p {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-image: url(../images/header-shop-men.jpg);
+	background-image: url(../front/images/header-shop-men.jpg);
 	background-position-x: 50%;
 }
 .shop_header.has_big_img {
@@ -4203,7 +4203,7 @@ figure.effect p {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(0,0,0,0.3) url(../images/category-img-overlay.png) repeat top left;
+	background: rgba(0,0,0,0.3) url(../front/images/category-img-overlay.png) repeat top left;
 }
 /*------- 18. Sidebar ---------*/
 
@@ -6608,7 +6608,7 @@ button.button.submit:before {
 	text-align: center;
 }
 .jtv-cart-summary .action a {
-	background: url("../images/delete_icon.png") no-repeat center center;
+	background: url("../front/images/delete_icon.png") no-repeat center center;
 	font-size: 0;
 	height: 9px;
 	width: 9px;
