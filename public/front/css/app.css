@@ -3219,6 +3219,7 @@ ul.products-grid {
 }
 .category-products ul.products-grid li.item img {
 	width: 100%;
+    height:290px;
 }
 .products-grid .item .actions {
 	position: absolute;
@@ -7290,7 +7291,7 @@ input.radio {
 	margin: 0;
 	padding: 0;
 }
-form-list label.required em {
+.form-list label.required em {
 	font-style: normal;
 }
 .required em {
