@@ -154,8 +154,8 @@
                                                                 class="reduced items-count" type="button"><i
                                                                     class="fa fa-minus">&nbsp;</i></button>
                                                             <input type="text" class="input-text qty" title="Qty"
-                                                                value="{{ $product->qty }}" maxlength="12"
-                                                                id="qty" name="qty">
+                                                                value="{{ $product->qty }}" maxlength="12" id="qty"
+                                                                name="qty">
                                                             <button
                                                                 onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;"
                                                                 class="increase items-count" type="button"><i
@@ -201,7 +201,7 @@
                             <div id="productTabContent" class="tab-content">
                                 <div class="tab-pane fade in active" id="product_tabs_description">
                                     <div class="std">
-                                        {!! $product->content !!}
+                                         {!! $product->getContentWithImagePath() !!}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="product_tabs_tags">
@@ -336,7 +336,7 @@
                                                                             <div class="rating-box">
                                                                                 <div class="rating" style="width:100%;">
                                                                                     @for ($i = 1; $i <= 5; $i++)
-                                                                                        @if ($i <= $product->avgRating)
+                                                                                        @if ($i <= $productComment->rating)
                                                                                             <i class="fa fa-star"></i>
                                                                                         @else
                                                                                             <i class="fa fa-star-o"></i>
@@ -429,7 +429,7 @@
                                                 <div class="item-content">
                                                     <div class="rating">
                                                         @for ($i = 1; $i <= 5; $i++)
-                                                            @if ($i <= $product->avgRating)
+                                                            @if ($i <= $relatedProduct->avgRating)
                                                                 <i class="fa fa-star"></i>
                                                             @else
                                                                 <i class="fa fa-star-o"></i>
@@ -440,12 +440,24 @@
                                                         <div class="price-box">
                                                             <div class="price-box">
                                                                 @if ($relatedProduct->discount != null)
-                                                                <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{number_format($relatedProduct->discount)}} VND</span> </p>
-                                                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{number_format($relatedProduct->price)}} VND</span> </p>
+                                                                    <p class="special-price"> <span
+                                                                            class="price-label">Special Price</span> <span
+                                                                            class="price">
+                                                                            {{ number_format($relatedProduct->discount) }}
+                                                                            VND</span> </p>
+                                                                    <p class="old-price"> <span
+                                                                            class="price-label">Regular Price:</span> <span
+                                                                            class="price">
+                                                                            {{ number_format($relatedProduct->price) }}
+                                                                            VND</span> </p>
                                                                 @else
-                                                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{number_format($relatedProduct->price)}} VND</span> </p>
+                                                                    <p class="old-price"> <span
+                                                                            class="price-label">Regular Price:</span> <span
+                                                                            class="price">
+                                                                            {{ number_format($relatedProduct->price) }}
+                                                                            VND</span> </p>
                                                                 @endif
-                                                              </div>
+                                                            </div>
                                                         </div>
                                                     </div>
 

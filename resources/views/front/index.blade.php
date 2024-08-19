@@ -1,6 +1,7 @@
 @extends('front.layout.master')
 @section('title', 'Home')
 
+@section('body_class','cms-index-index cms-home-page')
 @section('body')
     <!-- JTV Home Slider -->
     <div class="jtv-slideshow">
@@ -199,22 +200,32 @@
                                                 <div class="item-content">
                                                     <div class="rating">
                                                         @for ($i = 1; $i <= 5; $i++)
-                                                        @if ($i <= $featuredProduct->avgRating)
-                                                            <i class="fa fa-star"></i>
-                                                        @else
-                                                            <i class="fa fa-star-o"></i>
-                                                        @endif
-                                                    @endfor
+                                                            @if ($i <= $featuredProduct->avgRating)
+                                                                <i class="fa fa-star"></i>
+                                                            @else
+                                                                <i class="fa fa-star-o"></i>
+                                                            @endif
+                                                        @endfor
                                                     </div>
                                                     <div class="item-price">
                                                         <div class="price-box">
                                                             @if ($featuredProduct->discount != null)
-                                                            <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{number_format($featuredProduct->discount)}} VND</span> </p>
-                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{number_format($featuredProduct->price)}} VND</span> </p>
+                                                                <p class="special-price"> <span
+                                                                        class="price-label">Special Price</span> <span
+                                                                        class="price">
+                                                                        {{ number_format($featuredProduct->discount) }}
+                                                                        VND</span> </p>
+                                                                <p class="old-price"> <span class="price-label">Regular
+                                                                        Price:</span> <span class="price">
+                                                                        {{ number_format($featuredProduct->price) }}
+                                                                        VND</span> </p>
                                                             @else
-                                                            <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{number_format($featuredProduct->price)}} VND</span> </p>
+                                                                <p class="old-price"> <span class="price-label">Regular
+                                                                        Price:</span> <span class="price">
+                                                                        {{ number_format($featuredProduct->price) }}
+                                                                        VND</span> </p>
                                                             @endif
-                                                          </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -345,8 +356,7 @@
                 <div class="navbar nav-menu">
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab-1">All</a></li>
-                            <li><a data-toggle="tab" href="#tab-1">New Arrivals</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab-1">New Arrivals</a></li>
                             <li><a data-toggle="tab" href="#tab-2">On Sale</a></li>
                             <li><a data-toggle="tab" href="#tab-3">Best Rated</a></li>
                         </ul>
@@ -359,145 +369,79 @@
                     <div class="tab-panel active" id="tab-1">
                         <div class="category-products">
                             <ul class="products-grid">
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$155.00</span>
-                                                            </span> </div>
+                                @foreach ($newArrivalProducts as $newArrivalProduct)
+                                    <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                                        <div class="item-inner">
+                                            <div class="item-img">
+                                                <div class="item-img-info"><img class="img-responsive"
+                                                        alt="{{ $newArrivalProduct->name }}"
+                                                        src="{{ asset('front/images/products/' . $newArrivalProduct->productImages[0]->path) }}"><a
+                                                        href="{{ route('shop.show', $newArrivalProduct->id) }}"
+                                                        class="product-link"> </a>
+                                                    <div class="product-actions">
+                                                        <a href="shopping_cart.html">
+                                                            <i class="fa fa-cart-plus"></i>
+                                                            <span> Add to cart</span>
+                                                        </a>
+                                                        <a href="wishlist.html">
+                                                            <i class="fa fa-heart-o"></i>
+                                                            <span> Add to Wishlist</span>
+                                                        </a>
+                                                        <a href="compare.html" class="add-to-compare">
+                                                            <i class="fa fa-signal"></i>
+                                                            <span>Compare</span>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$225.00</span>
-                                                            </span> </div>
+                                            <div class="item-info">
+                                                <div class="info-inner">
+                                                    <div class="item-title"> <a title="{{ $newArrivalProduct->name }}"}}"
+                                                            href="{{ route('shop.show', $newArrivalProduct->id) }}">
+                                                            Product
+                                                            Title Here </a> </div>
+                                                    <div class="item-content">
+                                                        <div class="rating">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $newArrivalProduct->avgRating)
+                                                                    <i class="fa fa-star"></i>
+                                                                @else
+                                                                    <i class="fa fa-star-o"></i>
+                                                                @endif
+                                                            @endfor
+                                                        </div>
+                                                        <div class="item-price">
+                                                            <div class="price-box">
+                                                                @if ($newArrivalProduct->discount != null)
+                                                                    <p class="special-price">
+                                                                        <span class="price-label">Special Price</span>
+                                                                        <span class="price">
+                                                                            {{ number_format($newArrivalProduct->discount) }}
+                                                                            VND</span>
+                                                                    </p>
+                                                                    <p class="old-price">
+                                                                        <span class="price-label">Regular
+                                                                            Price:</span>
+                                                                        <span class="price">
+                                                                            {{ number_format($newArrivalProduct->price) }}
+                                                                            VND</span>
+                                                                    </p>
+                                                                @else
+                                                                <p class="special-price">
+                                                                    <span class="price-label">Regular
+                                                                        Price:</span>
+                                                                    <span class="price">
+                                                                        {{ number_format($newArrivalProduct->price) }}
+                                                                        VND</span>
+                                                                </p>
+                                                                @endif
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$99.00</span>
-                                                            </span> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$99.00</span>
-                                                            </span> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -505,286 +449,158 @@
                     <div class="tab-panel" id="tab-2">
                         <div class="category-products">
                             <ul class="products-grid">
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$155.00</span>
-                                                            </span> </div>
+                                @foreach ($onSaleProducts as $saleProduct)
+                                    <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                                        <div class="item-inner">
+                                            <div class="item-img">
+                                                <div class="item-img-info"><img class="img-responsive"
+                                                        alt="{{ $saleProduct->name }}"
+                                                        src="{{ asset('front/images/products/' . $saleProduct->productImages[0]->path) }}"><a
+                                                        href="{{ route('shop.show', $saleProduct->id) }}"
+                                                        class="product-link"> </a>
+                                                    <div class="product-actions">
+                                                        <a href="shopping_cart.html">
+                                                            <i class="fa fa-cart-plus"></i>
+                                                            <span> Add to cart</span>
+                                                        </a>
+                                                        <a href="wishlist.html">
+                                                            <i class="fa fa-heart-o"></i>
+                                                            <span> Add to Wishlist</span>
+                                                        </a>
+                                                        <a href="compare.html" class="add-to-compare">
+                                                            <i class="fa fa-signal"></i>
+                                                            <span>Compare</span>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$225.00</span>
-                                                            </span> </div>
+                                            <div class="item-info">
+                                                <div class="info-inner">
+                                                    <div class="item-title"> <a title="{{ $saleProduct->name }}"}}"
+                                                            href="{{ route('shop.show', $saleProduct->id) }}">
+                                                            Product
+                                                            Title Here </a> </div>
+                                                    <div class="item-content">
+                                                        <div class="rating">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $saleProduct->avgRating)
+                                                                    <i class="fa fa-star"></i>
+                                                                @else
+                                                                    <i class="fa fa-star-o"></i>
+                                                                @endif
+                                                            @endfor
+                                                        </div>
+                                                        <div class="item-price">
+                                                            <div class="price-box">
+                                                                @if ($saleProduct->discount != null)
+                                                                    <p class="special-price">
+                                                                        <span class="price-label">Special Price</span>
+                                                                        <span class="price">
+                                                                            {{ number_format($saleProduct->discount) }}
+                                                                            VND</span>
+                                                                    </p>
+                                                                    <p class="old-price">
+                                                                        <span class="price-label">Regular
+                                                                            Price:</span>
+                                                                        <span class="price">
+                                                                            {{ number_format($saleProduct->price) }}
+                                                                            VND</span>
+                                                                    </p>
+                                                                @else
+                                                                    <p class="special-price">
+                                                                        <span class="price-label">Regular
+                                                                            Price:</span>
+                                                                        <span class="price">
+                                                                            {{ number_format($saleProduct->price) }}
+                                                                            VND</span>
+                                                                    </p>
+                                                                @endif
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$99.00</span>
-                                                            </span> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star-o"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$155.00</span>
-                                                            </span> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="tab-panel" id="tab-3">
                         <div class="category-products">
                             <ul class="products-grid">
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$155.00</span>
-                                                            </span> </div>
+                                @foreach ($topRatedProducts as $topRatedProduct)
+                                    <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                                        <div class="item-inner">
+                                            <div class="item-img">
+                                                <div class="item-img-info"><img class="img-responsive"
+                                                        alt="{{ $topRatedProduct->name }}"
+                                                        src="{{ asset('front/images/products/' . $topRatedProduct->productImages[0]->path) }}"><a
+                                                        href="{{ route('shop.show', $topRatedProduct->id) }}"
+                                                        class="product-link"> </a>
+                                                    <div class="product-actions">
+                                                        <a href="shopping_cart.html">
+                                                            <i class="fa fa-cart-plus"></i>
+                                                            <span> Add to cart</span>
+                                                        </a>
+                                                        <a href="wishlist.html">
+                                                            <i class="fa fa-heart-o"></i>
+                                                            <span> Add to Wishlist</span>
+                                                        </a>
+                                                        <a href="compare.html" class="add-to-compare">
+                                                            <i class="fa fa-signal"></i>
+                                                            <span>Compare</span>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$225.00</span>
-                                                            </span> </div>
+                                            <div class="item-info">
+                                                <div class="info-inner">
+                                                    <div class="item-title"> <a title="{{ $topRatedProduct->name }}"}}"
+                                                            href="{{ route('shop.show', $topRatedProduct->id) }}">
+                                                            Product
+                                                            Title Here </a> </div>
+                                                    <div class="item-content">
+                                                        <div class="rating">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $topRatedProduct->avgRating)
+                                                                    <i class="fa fa-star"></i>
+                                                                @else
+                                                                    <i class="fa fa-star-o"></i>
+                                                                @endif
+                                                            @endfor
+                                                        </div>
+                                                        <div class="item-price">
+                                                            <div class="price-box">
+                                                                @if ($topRatedProduct->discount != null)
+                                                                    <p class="special-price">
+                                                                        <span class="price-label">Special Price</span>
+                                                                        <span class="price">
+                                                                            {{ number_format($topRatedProduct->discount) }}
+                                                                            VND</span>
+                                                                    </p>
+                                                                    <p class="old-price">
+                                                                        <span class="price-label">Regular
+                                                                            Price:</span>
+                                                                        <span class="price">
+                                                                            {{ number_format($topRatedProduct->price) }}
+                                                                            VND</span>
+                                                                    </p>
+                                                                @else
+                                                                    <p class="special-price">
+                                                                        <span class="price-label">Regular
+                                                                            Price:</span>
+                                                                        <span class="price">
+                                                                            {{ number_format($topRatedProduct->price) }}
+                                                                            VND</span>
+                                                                    </p>
+                                                                @endif
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$99.00</span>
-                                                            </span> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info"><img class="img-responsive"
-                                                    alt="Product Title Here"
-                                                    src="../images/products/product-fashion-1.jpg"><a
-                                                    href="single_product.html" class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span> Add to cart</span></a><a
-                                                        href="wishlist.html"><i class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="Product Title Here"
-                                                        href="single_product.html"> Product
-                                                        Title Here </a> </div>
-                                                <div class="item-content">
-                                                    <div class="rating"> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box"> <span class="regular-price"> <span
-                                                                    class="price">$155.00</span>
-                                                            </span> </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -827,51 +643,25 @@
                         <h2>Most Recent Blog</h2>
                     </div>
                     <div class="blog-inner">
+                        @foreach($latestBlogs as $latestBlog)
                         <div class="col-sm-4 col-xs-12">
-                            <div class="entry-thumb"> <a href="blog_single_post.html"> <img class="img-responsive"
-                                        alt="Blog" src="images/blog-img1.jpg"> </a> </div>
+                            <div class="entry-thumb">
+                                <a href="blog_single_post.html">
+                                    <img class="img-responsive"
+                                        alt="Blog" src="{{asset('front/images/blogs/'.$latestBlog->image)}}">
+                                    </a>
+                                </div>
                             <div class="blog-preview_info">
-                                <h3><a href="blog_single_post.html">Winter Morning Fabulous</a></h3>
+                                <h3><a href="blog_single_post.html">{{$latestBlog->title}}</a></h3>
                                 <ul class="post-meta">
                                     <li><i class="fa fa-user"></i><a href="#">admin</a></li>
-                                    <li><i class="fa fa-comments"></i><a href="#">12 comments</a></li>
-                                    <li><i class="fa fa-calendar"></i>2017-02-25</li>
+                                    <li><i class="fa fa-comments"></i><a href="#">{{count($latestBlog->blogComments)}} comments</a></li>
+                                    <li><i class="fa fa-calendar"></i>{{date('M d, Y',strtotime($latestBlog->created_at))}}</li>
                                 </ul>
-                                <div class="blog-preview_desc">In adipiscing leo magna, a vehicula mi convallis ac. Vivamus
-                                    volutpat,
-                                    ante nec congue dictum.</div>
+                                <div class="blog-preview_desc">I{{$latestBlog->subtitle}}</div>
                             </div>
                         </div>
-                        <div class="col-sm-4 col-xs-12">
-                            <div class="entry-thumb"> <a href="blog_single_post.html"> <img class="img-responsive"
-                                        alt="Blog" src="images/blog-img1.jpg"> </a> </div>
-                            <div class="blog-preview_info">
-                                <h3><a href="blog_single_post.html">Perfect for promoting</a></h3>
-                                <ul class="post-meta">
-                                    <li><i class="fa fa-user"></i><a href="#">admin</a></li>
-                                    <li><i class="fa fa-comments"></i><a href="#">45 comments</a></li>
-                                    <li><i class="fa fa-calendar"></i>2018-04-05</li>
-                                </ul>
-                                <div class="blog-preview_desc">Nam a dolor dictum, dapibus libero eu, malesuada nulla.
-                                    Aliquam
-                                    convallis vulputate.</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 col-xs-12">
-                            <div class="entry-thumb"> <a href="blog_single_post.html"> <img class="img-responsive"
-                                        alt="Blog" src="images/blog-img1.jpg"> </a> </div>
-                            <div class="blog-preview_info">
-                                <h3><a href="blog_single_post.html">Winter Morning Fabulous</a></h3>
-                                <ul class="post-meta">
-                                    <li><i class="fa fa-user"></i><a href="#">admin</a></li>
-                                    <li><i class="fa fa-comments"></i><a href="#">15 comments</a></li>
-                                    <li><i class="fa fa-calendar"></i>2018-02-28</li>
-                                </ul>
-                                <div class="blog-preview_desc">In adipiscing leo magna, a vehicula mi convallis ac.
-                                    Vivamus volutpat,
-                                    ante nec congue dictum.</div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -1074,8 +864,7 @@
                                                         <div class="item-content">
                                                             <div class="rating"> <i class="fa fa-star"></i> <i
                                                                     class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
                                                             </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price">
@@ -1101,8 +890,7 @@
                                                         <div class="item-content">
                                                             <div class="rating"> <i class="fa fa-star"></i> <i
                                                                     class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
                                                             </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price">
@@ -1128,8 +916,7 @@
                                                         <div class="item-content">
                                                             <div class="rating"> <i class="fa fa-star"></i> <i
                                                                     class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
                                                             </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price">
@@ -1155,8 +942,7 @@
                                                         <div class="item-content">
                                                             <div class="rating"> <i class="fa fa-star"></i> <i
                                                                     class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
                                                             </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price">
@@ -1180,10 +966,8 @@
                                                                 Title Here</a> </div>
                                                         <div class="item-content">
                                                             <div class="rating"> <i class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i>
+                                                                    class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
                                                             </div>
                                                             <div class="item-price">
                                                                 <div class="price-box">
@@ -1215,8 +999,7 @@
                                                         <div class="item-content">
                                                             <div class="rating"> <i class="fa fa-star"></i> <i
                                                                     class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
                                                             </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price">
@@ -1244,8 +1027,7 @@
                                                         <div class="item-content">
                                                             <div class="rating"> <i class="fa fa-star"></i> <i
                                                                     class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i> <i
-                                                                    class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
                                                             </div>
                                                             <div class="item-price">
                                                                 <div class="price-box"> <span class="regular-price">

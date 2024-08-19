@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('shop/product/{id}',[ShopController::class,'show'])->name('shop.show');
-Route::post('shop/product/{id}',[ShopController::class,'postComment']);
+Route::prefix('shop')->group(function () {
+    Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+    Route::get('product/{id}', [ShopController::class, 'show'])->name('shop.show');
+    Route::post('product/{id}', [ShopController::class, 'postComment']);
+    Route::get('category/{categorySlug}', [ShopController::class, 'category'])->name('shop.category');
+});
