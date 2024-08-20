@@ -1,6 +1,9 @@
 @extends('front.layout.master')
 
 @section('title', 'Shop')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('front/css/filter-attribute.css') }}">
+@endsection
 @section('body_class', 'category-page')
 @section('body')
     <!-- Breadcrumbs -->
@@ -76,13 +79,20 @@
                                 </div>
                                 <form action="">
                                     <div class="col-md-3 col-sm-2 text-right">
-                                        <select id="input-sort" name="sord_by" class="form-control col-sm-3" onchange="this.form.submit();">
-                                            <option {{request('sord_by') == 'latest' ? 'selected' : ''}} value="latest" selected="selected">Latest</option>
-                                            <option {{request('sord_by') == 'oldest' ? 'selected' : ''}} value="oldest">Oldest</option>
-                                            <option {{request('sord_by') == 'name-asc' ? 'selected' : ''}} value="name-asc">Name (A - Z)</option>
-                                            <option {{request('sord_by') == 'name-desc' ? 'selected' : ''}} value="name-desc">Name (Z - A)</option>
-                                            <option {{request('sord_by') == 'price-asc' ? 'selected' : ''}} value="price-asc">Price (Low &gt; High)</option>
-                                            <option {{request('sord_by') == 'price-desc' ? 'selected' : ''}} value="price-desc">Price (High &gt; Low)</option>
+                                        <select id="input-sort" name="sord_by" class="form-control col-sm-3"
+                                            onchange="this.form.submit();">
+                                            <option {{ request('sord_by') == 'latest' ? 'selected' : '' }} value="latest"
+                                                selected="selected">Latest</option>
+                                            <option {{ request('sord_by') == 'oldest' ? 'selected' : '' }} value="oldest">
+                                                Oldest</option>
+                                            <option {{ request('sord_by') == 'name-asc' ? 'selected' : '' }}
+                                                value="name-asc">Name (A - Z)</option>
+                                            <option {{ request('sord_by') == 'name-desc' ? 'selected' : '' }}
+                                                value="name-desc">Name (Z - A)</option>
+                                            <option {{ request('sord_by') == 'price-asc' ? 'selected' : '' }}
+                                                value="price-asc">Price (Low &gt; High)</option>
+                                            <option {{ request('sord_by') == 'price-desc' ? 'selected' : '' }}
+                                                value="price-desc">Price (High &gt; Low)</option>
                                             {{-- <option value="">Rating (Highest)</option>
                                             <option value="">Rating (Lowest)</option> --}}
                                         </select>
@@ -91,12 +101,17 @@
                                         <label class="control-label" for="input-limit">Show:</label>
                                     </div>
                                     <div class="col-sm-2 text-right">
-                                        <select id="input-limit" class="form-control" name="show" onchange="this.form.submit();">
-                                            <option {{request('show') == 4 ? 'selected' : ''}} value="4" selected="selected">4</option>
-                                            <option {{request('show') == 8 ? 'selected' : ''}} value="8">8</option>
-                                            <option {{request('show') == 12 ? 'selected' : ''}} value="12">12</option>
-                                            <option {{request('show') == 16 ? 'selected' : ''}} value="16">16</option>
-                                            <option {{request('show') == 32 ? 'selected' : ''}} value="32">32</option>
+                                        <select id="input-limit" class="form-control" name="show"
+                                            onchange="this.form.submit();">
+                                            <option {{ request('show') == 4 ? 'selected' : '' }} value="4"
+                                                selected="selected">4</option>
+                                            <option {{ request('show') == 8 ? 'selected' : '' }} value="8">8</option>
+                                            <option {{ request('show') == 12 ? 'selected' : '' }} value="12">12
+                                            </option>
+                                            <option {{ request('show') == 16 ? 'selected' : '' }} value="16">16
+                                            </option>
+                                            <option {{ request('show') == 32 ? 'selected' : '' }} value="32">32
+                                            </option>
                                         </select>
                                     </div>
                                 </form>
@@ -106,78 +121,7 @@
                             <ul class="products-grid">
                                 @foreach ($products as $product)
                                     <li class="item col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                                        <div class="item-inner">
-                                            <div class="item-img">
-                                                <div class="item-img-info">
-                                                    <img class="img-responsive" alt="{{ $product->name }}"
-                                                        src="{{ asset('front/images/products/' . $product->productImages[0]->path) }}">
-                                                    <a href="{{ route('shop.show', $product->id) }}" class="product-link">
-                                                    </a>
-                                                    @if ($product->discount != null)
-                                                        <div class="sale-label sale-top-right">Sale</div>
-                                                    @endif
-                                                    <div class="mask-shop-white"></div>
-                                                    <div class="product-actions">
-                                                        <a href="shopping_cart.html">
-                                                            <i class="fa fa-cart-plus"></i>
-                                                            <span> Add to cart</span>
-                                                        </a>
-                                                        <a href="wishlist.html">
-                                                            <i class="fa fa-heart-o"></i>
-                                                            <span> Add to
-                                                                Wishlist</span>
-                                                        </a>
-                                                        <a href="compare.html" class="add-to-compare">
-                                                            <i class="fa fa-signal"></i>
-                                                            <span>Compare</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="{{ $product->name }}"
-                                                            ref="{{ route('shop.show', $product->id) }}">
-                                                            {{ $product->name }} </a> </div>
-                                                    <div class="item-content">
-                                                        <div class="rating">
-                                                            @for ($i = 1; $i <= 5; $i++)
-                                                                @if ($i <= $product->avgRating)
-                                                                    <i class="fa fa-star"></i>
-                                                                @else
-                                                                    <i class="fa fa-star-o"></i>
-                                                                @endif
-                                                            @endfor
-                                                        </div>
-                                                        <div class="item-price">
-                                                            @if ($product->discount != null)
-                                                                <p class="special-price">
-                                                                    <span class="price-label">Special Price</span>
-                                                                    <span class="price">
-                                                                        {{ number_format($product->discount) }}
-                                                                        VND</span>
-                                                                </p>
-                                                                <p class="old-price">
-                                                                    <span class="price-label">Regular
-                                                                        Price:</span>
-                                                                    <span class="price">
-                                                                        {{ number_format($product->price) }}
-                                                                        VND</span>
-                                                                </p>
-                                                            @else
-                                                                <p class="special-price">
-                                                                    <span class="price-label">Regular
-                                                                        Price:</span>
-                                                                    <span class="price">
-                                                                        {{ number_format($product->price) }}
-                                                                        VND</span>
-                                                                </p>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @include('front.components.product-item')
                                     </li>
                                 @endforeach
                             </ul>
@@ -194,7 +138,9 @@
                                         <x-custom-paginator :paginator="$products" />
                                     </ul>
                                 </div>
-                                <div class="col-sm-6 text-right">Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }} ({{ $products->lastPage() }} Pages)</div>
+                                <div class="col-sm-6 text-right">Showing {{ $products->firstItem() }} to
+                                    {{ $products->lastItem() }} of {{ $products->total() }} ({{ $products->lastPage() }}
+                                    Pages)</div>
                             </div>
                         </div>
                     </article>
@@ -202,60 +148,7 @@
                 </div>
                 <div class="sidebar col-sm-4 col-md-3 col-xs-12 col-md-pull-9 col-sm-pull-8">
                     <aside class="sidebar">
-                        <div class="block block-layered-nav">
-                            <div class="block-title">Shop By</div>
-                            <div class="block-content">
-                                <p class="block-subtitle">Shopping Options</p>
-                                <dl id="narrow-by-list">
-                                    <dt class="odd">Price</dt>
-                                    <dd class="odd">
-                                        <ol>
-                                            <li><a href="#"><span class="price">$0.00</span> - <span
-                                                        class="price">$99.99</span></a> (6) </li>
-                                            <li><a href="#"><span class="price">$100.00</span> and above</a> (6)
-                                            </li>
-                                        </ol>
-                                    </dd>
-                                    <dt class="even">Category</dt>
-                                    <dd class="even">
-                                        <ol>
-                                            @foreach($categories as $category)
-                                                <li><a href="{{ route('shop.category', $category->slug) }}">{{ $category->name }}</a> </li>
-                                            @endforeach
-                                            {{-- <li><a href="#">Kids Dresses</a> (20) </li>
-                                            <li><a href="#">Unisex Clothing</a> (25) </li>
-                                            <li><a href="#">Winter Wear</a> (8) </li>
-                                            <li><a href="#">Garments</a> (5) </li>
-                                            <li><a href="#">Undergarments</a> (2) </li> --}}
-                                        </ol>
-                                    </dd>
-
-                                    <dt class="odd">Size</dt>
-                                    <div class="size-area">
-                                        <div class="size">
-                                            <ul>
-                                                <li><a href="#">S</a></li>
-                                                <li><a href="#">L</a></li>
-                                                <li><a href="#">M</a></li>
-                                                <li><a href="#">XL</a></li>
-                                                <li><a href="#">XXL</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <dt class="odd">Color</dt>
-                                    <dd class="odd">
-                                        <ol>
-                                            <li><a href="#">Green</a> (1) </li>
-                                            <li><a href="#">White</a> (5) </li>
-                                            <li><a href="#">Black</a> (5) </li>
-                                            <li><a href="#">Gray</a> (4) </li>
-                                            <li><a href="#">Dark Gray</a> (3) </li>
-                                            <li><a href="#">Blue</a> (1) </li>
-                                        </ol>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>
+                        @include('front.shop.components.products-sidebar-filter')
                         <div class="block block-cart">
                             <div class="block-title ">My Cart</div>
                             <div class="block-content">

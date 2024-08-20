@@ -393,78 +393,7 @@
                         <div class="slider-items slider-width-col4 products-grid block-content">
                             @foreach ($relatedProducts as $relatedProduct)
                                 <div class="item">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info">
-                                                <img class="img-responsive" alt="{{ $relatedProduct->name }}"
-                                                    src="{{ asset('front/images/products/' . $relatedProduct->productImages[0]->path) }}">
-                                                @if ($relatedProduct->discount != null)
-                                                    <div class="sale-label sale-top-right">Sale</div>
-                                                @endif
-                                                <div class="mask-shop-white"></div>
-                                                <a href="{{ route('shop.show', $relatedProduct->id) }}"
-                                                    class="product-link"> </a>
-                                                <div class="product-actions">
-                                                    <a href="shopping_cart.html"><i class="fa fa-cart-plus"></i>
-                                                        <span> Add to cart</span>
-                                                    </a>
-                                                    <a href="href="{{ route('shop.show', $relatedProduct->id) }}"">
-                                                        <i class="fa fa-heart-o"></i>
-                                                        <span> Add to Wishlist</span>
-                                                    </a>
-                                                    <a href="href="{{ route('shop.show', $relatedProduct->id) }}""
-                                                        class="add-to-compare">
-                                                        <i class="fa fa-signal"></i>
-                                                        <span>Compare</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title"> <a title="{{ $relatedProduct->name }}"
-                                                        href="{{ route('shop.show', $relatedProduct->id) }}">
-                                                        {{ $relatedProduct->name }} </a>
-                                                </div>
-                                                <div class="item-content">
-                                                    <div class="rating">
-                                                        @for ($i = 1; $i <= 5; $i++)
-                                                            @if ($i <= $relatedProduct->avgRating)
-                                                                <i class="fa fa-star"></i>
-                                                            @else
-                                                                <i class="fa fa-star-o"></i>
-                                                            @endif
-                                                        @endfor
-                                                    </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box">
-                                                            <div class="price-box">
-                                                                @if ($relatedProduct->discount != null)
-                                                                    <p class="special-price"> <span
-                                                                            class="price-label">Special Price</span> <span
-                                                                            class="price">
-                                                                            {{ number_format($relatedProduct->discount) }}
-                                                                            VND</span> </p>
-                                                                    <p class="old-price"> <span
-                                                                            class="price-label">Regular Price:</span> <span
-                                                                            class="price">
-                                                                            {{ number_format($relatedProduct->price) }}
-                                                                            VND</span> </p>
-                                                                @else
-                                                                    <p class="old-price"> <span
-                                                                            class="price-label">Regular Price:</span> <span
-                                                                            class="price">
-                                                                            {{ number_format($relatedProduct->price) }}
-                                                                            VND</span> </p>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @include('front.components.product-item')
                                 </div>
                             @endforeach
                         </div>
