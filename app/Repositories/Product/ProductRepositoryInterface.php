@@ -14,4 +14,5 @@ interface ProductRepositoryInterface extends RepositoryInterface
     public function getTopRatedProducts($limit = 4);
     public function getProductsOnIndex($request);
     public function getProductsByCategory($categorySlug,$request);
+    public function calculateAvgRating($product);
 }

@@ -4264,13 +4264,20 @@ figure.effect p {
 	padding: 28px 0px 0px
 }
 .product-price-range .amount-range-price {
-	padding: 15px 0
+	padding: 15px 0;
+    text-align: center;
 }
 .product-price-range .slider-range-price {
 	height: 7px;
 	background: #666;
 	border: none;
 	border-radius: 2px
+}
+.amount-range-price input {
+    width: 100px;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
 }
 .product-price-range .slider-range-price .ui-widget-header {
 	background: #666;
@@ -4282,6 +4289,7 @@ figure.effect p {
 	background: #f66;
 	cursor: pointer
 }
+
 .check-box-list {
 	overflow: hidden
 }

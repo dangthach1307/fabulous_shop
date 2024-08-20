@@ -172,65 +172,9 @@
                     </div>
                     <div id="bestsell-slider" class="product-flexslider hidden-buttons">
                         <div class="slider-items slider-width-col4 products-grid block-content">
-                            @foreach ($featuredProducts as $featuredProduct)
+                            @foreach ($featuredProducts as $product)
                                 <div class="item">
-                                    <div class="item-inner">
-                                        <div class="item-img">
-                                            <div class="item-img-info">
-                                                <img class="img-responsive" alt="{{ $featuredProduct->name }}"
-                                                    src="{{ asset('front/images/products/' . $featuredProduct->productImages[0]->path) }}">
-                                                <a href="{{ route('shop.show', $featuredProduct->id) }}"
-                                                    class="product-link"> </a>
-                                                <div class="product-actions"> <a href="shopping_cart.html"><i
-                                                            class="fa fa-cart-plus"></i><span>
-                                                            Add to cart</span></a><a href="wishlist.html"><i
-                                                            class="fa fa-heart-o"></i><span> Add to
-                                                            Wishlist</span></a> <a href="compare.html"
-                                                        class="add-to-compare"><i
-                                                            class="fa fa-signal"></i><span>Compare</span></a> </div>
-                                            </div>
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="info-inner">
-                                                <div class="item-title">
-                                                    <a title="{{ $featuredProduct->name }}"
-                                                        href="{{ route('shop.show', $featuredProduct->id) }}">
-                                                        {{ $featuredProduct->name }}</a>
-                                                </div>
-                                                <div class="item-content">
-                                                    <div class="rating">
-                                                        @for ($i = 1; $i <= 5; $i++)
-                                                            @if ($i <= $featuredProduct->avgRating)
-                                                                <i class="fa fa-star"></i>
-                                                            @else
-                                                                <i class="fa fa-star-o"></i>
-                                                            @endif
-                                                        @endfor
-                                                    </div>
-                                                    <div class="item-price">
-                                                        <div class="price-box">
-                                                            @if ($featuredProduct->discount != null)
-                                                                <p class="special-price"> <span
-                                                                        class="price-label">Special Price</span> <span
-                                                                        class="price">
-                                                                        {{ number_format($featuredProduct->discount) }}
-                                                                        VND</span> </p>
-                                                                <p class="old-price"> <span class="price-label">Regular
-                                                                        Price:</span> <span class="price">
-                                                                        {{ number_format($featuredProduct->price) }}
-                                                                        VND</span> </p>
-                                                            @else
-                                                                <p class="old-price"> <span class="price-label">Regular
-                                                                        Price:</span> <span class="price">
-                                                                        {{ number_format($featuredProduct->price) }}
-                                                                        VND</span> </p>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @include('front.components.product-item')
                                 </div>
                             @endforeach
                         </div>
@@ -369,77 +313,9 @@
                     <div class="tab-panel active" id="tab-1">
                         <div class="category-products">
                             <ul class="products-grid">
-                                @foreach ($newArrivalProducts as $newArrivalProduct)
+                                @foreach ($newArrivalProducts as $product)
                                     <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                        <div class="item-inner">
-                                            <div class="item-img">
-                                                <div class="item-img-info"><img class="img-responsive"
-                                                        alt="{{ $newArrivalProduct->name }}"
-                                                        src="{{ asset('front/images/products/' . $newArrivalProduct->productImages[0]->path) }}"><a
-                                                        href="{{ route('shop.show', $newArrivalProduct->id) }}"
-                                                        class="product-link"> </a>
-                                                    <div class="product-actions">
-                                                        <a href="shopping_cart.html">
-                                                            <i class="fa fa-cart-plus"></i>
-                                                            <span> Add to cart</span>
-                                                        </a>
-                                                        <a href="wishlist.html">
-                                                            <i class="fa fa-heart-o"></i>
-                                                            <span> Add to Wishlist</span>
-                                                        </a>
-                                                        <a href="compare.html" class="add-to-compare">
-                                                            <i class="fa fa-signal"></i>
-                                                            <span>Compare</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="{{ $newArrivalProduct->name }}"}}"
-                                                            href="{{ route('shop.show', $newArrivalProduct->id) }}">
-                                                            Product
-                                                            Title Here </a> </div>
-                                                    <div class="item-content">
-                                                        <div class="rating">
-                                                            @for ($i = 1; $i <= 5; $i++)
-                                                                @if ($i <= $newArrivalProduct->avgRating)
-                                                                    <i class="fa fa-star"></i>
-                                                                @else
-                                                                    <i class="fa fa-star-o"></i>
-                                                                @endif
-                                                            @endfor
-                                                        </div>
-                                                        <div class="item-price">
-                                                            <div class="price-box">
-                                                                @if ($newArrivalProduct->discount != null)
-                                                                    <p class="special-price">
-                                                                        <span class="price-label">Special Price</span>
-                                                                        <span class="price">
-                                                                            {{ number_format($newArrivalProduct->discount) }}
-                                                                            VND</span>
-                                                                    </p>
-                                                                    <p class="old-price">
-                                                                        <span class="price-label">Regular
-                                                                            Price:</span>
-                                                                        <span class="price">
-                                                                            {{ number_format($newArrivalProduct->price) }}
-                                                                            VND</span>
-                                                                    </p>
-                                                                @else
-                                                                <p class="special-price">
-                                                                    <span class="price-label">Regular
-                                                                        Price:</span>
-                                                                    <span class="price">
-                                                                        {{ number_format($newArrivalProduct->price) }}
-                                                                        VND</span>
-                                                                </p>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        @include('front.components.product-item')
                                     </li>
                                 @endforeach
                             </ul>
@@ -449,77 +325,9 @@
                     <div class="tab-panel" id="tab-2">
                         <div class="category-products">
                             <ul class="products-grid">
-                                @foreach ($onSaleProducts as $saleProduct)
+                                @foreach ($onSaleProducts as $product)
                                     <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                        <div class="item-inner">
-                                            <div class="item-img">
-                                                <div class="item-img-info"><img class="img-responsive"
-                                                        alt="{{ $saleProduct->name }}"
-                                                        src="{{ asset('front/images/products/' . $saleProduct->productImages[0]->path) }}"><a
-                                                        href="{{ route('shop.show', $saleProduct->id) }}"
-                                                        class="product-link"> </a>
-                                                    <div class="product-actions">
-                                                        <a href="shopping_cart.html">
-                                                            <i class="fa fa-cart-plus"></i>
-                                                            <span> Add to cart</span>
-                                                        </a>
-                                                        <a href="wishlist.html">
-                                                            <i class="fa fa-heart-o"></i>
-                                                            <span> Add to Wishlist</span>
-                                                        </a>
-                                                        <a href="compare.html" class="add-to-compare">
-                                                            <i class="fa fa-signal"></i>
-                                                            <span>Compare</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="{{ $saleProduct->name }}"}}"
-                                                            href="{{ route('shop.show', $saleProduct->id) }}">
-                                                            Product
-                                                            Title Here </a> </div>
-                                                    <div class="item-content">
-                                                        <div class="rating">
-                                                            @for ($i = 1; $i <= 5; $i++)
-                                                                @if ($i <= $saleProduct->avgRating)
-                                                                    <i class="fa fa-star"></i>
-                                                                @else
-                                                                    <i class="fa fa-star-o"></i>
-                                                                @endif
-                                                            @endfor
-                                                        </div>
-                                                        <div class="item-price">
-                                                            <div class="price-box">
-                                                                @if ($saleProduct->discount != null)
-                                                                    <p class="special-price">
-                                                                        <span class="price-label">Special Price</span>
-                                                                        <span class="price">
-                                                                            {{ number_format($saleProduct->discount) }}
-                                                                            VND</span>
-                                                                    </p>
-                                                                    <p class="old-price">
-                                                                        <span class="price-label">Regular
-                                                                            Price:</span>
-                                                                        <span class="price">
-                                                                            {{ number_format($saleProduct->price) }}
-                                                                            VND</span>
-                                                                    </p>
-                                                                @else
-                                                                    <p class="special-price">
-                                                                        <span class="price-label">Regular
-                                                                            Price:</span>
-                                                                        <span class="price">
-                                                                            {{ number_format($saleProduct->price) }}
-                                                                            VND</span>
-                                                                    </p>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        @include('front.components.product-item')
                                     </li>
                                 @endforeach
                             </ul>
@@ -528,77 +336,9 @@
                     <div class="tab-panel" id="tab-3">
                         <div class="category-products">
                             <ul class="products-grid">
-                                @foreach ($topRatedProducts as $topRatedProduct)
+                                @foreach ($topRatedProducts as $product)
                                     <li class="item col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                                        <div class="item-inner">
-                                            <div class="item-img">
-                                                <div class="item-img-info"><img class="img-responsive"
-                                                        alt="{{ $topRatedProduct->name }}"
-                                                        src="{{ asset('front/images/products/' . $topRatedProduct->productImages[0]->path) }}"><a
-                                                        href="{{ route('shop.show', $topRatedProduct->id) }}"
-                                                        class="product-link"> </a>
-                                                    <div class="product-actions">
-                                                        <a href="shopping_cart.html">
-                                                            <i class="fa fa-cart-plus"></i>
-                                                            <span> Add to cart</span>
-                                                        </a>
-                                                        <a href="wishlist.html">
-                                                            <i class="fa fa-heart-o"></i>
-                                                            <span> Add to Wishlist</span>
-                                                        </a>
-                                                        <a href="compare.html" class="add-to-compare">
-                                                            <i class="fa fa-signal"></i>
-                                                            <span>Compare</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item-info">
-                                                <div class="info-inner">
-                                                    <div class="item-title"> <a title="{{ $topRatedProduct->name }}"}}"
-                                                            href="{{ route('shop.show', $topRatedProduct->id) }}">
-                                                            Product
-                                                            Title Here </a> </div>
-                                                    <div class="item-content">
-                                                        <div class="rating">
-                                                            @for ($i = 1; $i <= 5; $i++)
-                                                                @if ($i <= $topRatedProduct->avgRating)
-                                                                    <i class="fa fa-star"></i>
-                                                                @else
-                                                                    <i class="fa fa-star-o"></i>
-                                                                @endif
-                                                            @endfor
-                                                        </div>
-                                                        <div class="item-price">
-                                                            <div class="price-box">
-                                                                @if ($topRatedProduct->discount != null)
-                                                                    <p class="special-price">
-                                                                        <span class="price-label">Special Price</span>
-                                                                        <span class="price">
-                                                                            {{ number_format($topRatedProduct->discount) }}
-                                                                            VND</span>
-                                                                    </p>
-                                                                    <p class="old-price">
-                                                                        <span class="price-label">Regular
-                                                                            Price:</span>
-                                                                        <span class="price">
-                                                                            {{ number_format($topRatedProduct->price) }}
-                                                                            VND</span>
-                                                                    </p>
-                                                                @else
-                                                                    <p class="special-price">
-                                                                        <span class="price-label">Regular
-                                                                            Price:</span>
-                                                                        <span class="price">
-                                                                            {{ number_format($topRatedProduct->price) }}
-                                                                            VND</span>
-                                                                    </p>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        @include('front.components.product-item')
                                     </li>
                                 @endforeach
                             </ul>

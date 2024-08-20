@@ -6,7 +6,7 @@ jQuery(document).ready(function() {
 /******************************************
    Newsletter popup
 ******************************************/
- 
+
   jQuery('#myModal').appendTo("body");
           function show_modal(){
             jQuery('#myModal').modal('show');
@@ -15,11 +15,11 @@ jQuery(document).ready(function() {
             jQuery('#myModal').modal({
             keyboard: false,
            backdrop:false
-          }); 
-		  
+          });
+
 /******************************************
    Navigation
-******************************************/		  
+******************************************/
 
 	jQuery("#nav > li").hover(function() {
 		var el = jQuery(this).find(".jtv-menu-block-wrapper");
@@ -43,7 +43,7 @@ jQuery(document).ready(function() {
 	});
 /******************************************
    Navigation
-******************************************/	
+******************************************/
 jQuery("#hot-deal-slider .slider-items").owlCarousel({
 		items: 1, //10 items above 1000px browser width
 		itemsDesktop: [1024, 1], //5 items between 1024px and 901px
@@ -56,10 +56,10 @@ jQuery("#hot-deal-slider .slider-items").owlCarousel({
 		pagination: false,
 		autoPlay: true,
 	});
-	
+
 /******************************************
    bestsell slider
-******************************************/	
+******************************************/
 	jQuery("#bestsell-slider .slider-items").owlCarousel({
 		items: 5, //10 items above 1000px browser width
 		itemsDesktop: [1024, 4], //5 items between 1024px and 901px
@@ -73,7 +73,7 @@ jQuery("#hot-deal-slider .slider-items").owlCarousel({
 	});
 /******************************************
    Top Cat slider
-******************************************/	
+******************************************/
 	jQuery("#top-cat-slider .slider-items").owlCarousel({
 		items: 5, //10 items above 1000px browser width
 		itemsDesktop: [1024, 4], //5 items between 1024px and 901px
@@ -87,7 +87,7 @@ jQuery("#hot-deal-slider .slider-items").owlCarousel({
 	});
 /******************************************
    Recently Viewed Products slider
-******************************************/	
+******************************************/
 	jQuery("#recently-viewed-products .slider-items").owlCarousel({
 	items : 1, //10 items above 1000px browser width
 	itemsDesktop : [1024,1], //5 items between 1024px and 901px
@@ -137,8 +137,8 @@ jQuery("#hot-deal-slider .slider-items").owlCarousel({
 		navigationText: ["<a class=\"flex-prev\"></a>", "<a class=\"flex-next\"></a>"],
 		slideSpeed: 500,
 		pagination: false
-	});	
-	
+	});
+
 	/* Category desc slider */
 	jQuery("#category-desc-slider .slider-items").owlCarousel({
 		autoPlay: true,
@@ -189,7 +189,7 @@ jQuery("#hot-deal-slider .slider-items").owlCarousel({
 	});
 	/* side nav categories */
 
-	
+
 	if (jQuery('.subDropdown')[0]) {
 		jQuery('.subDropdown').on("click", function() {
 			jQuery(this).toggleClass('plus');
@@ -245,33 +245,34 @@ jQuery("#hot-deal-slider .slider-items").owlCarousel({
 	/*  sticky header  */
 	jQuery(window).scroll(function() {
 		jQuery(this).scrollTop() > 100 ? jQuery("nav").addClass("jtv-sticky-header") : jQuery("nav").removeClass("jtv-sticky-header")
-		
+
 	});
 });
 /******************************************
     PRICE FILTER
 ******************************************/
 
-jQuery('.slider-range-price').each(function() {
-	var min = jQuery(this).data('min');
-	var max = jQuery(this).data('max');
-	var unit = jQuery(this).data('unit');
-	var value_min = jQuery(this).data('value-min');
-	var value_max = jQuery(this).data('value-max');
-	var label_reasult = jQuery(this).data('label-reasult');
-	var t = jQuery(this);
-	jQuery(this).slider({
-		range: true,
-		min: min,
-		max: max,
-		values: [value_min, value_max],
-		slide: function(event, ui) {
-			var result = label_reasult + " " + unit + ui.values[0] + ' - ' + unit + ui.values[1];
-			console.log(t);
-			t.closest('.slider-range').find('.amount-range-price').html(result);
-		}
-	});
-})
+var priceRangeSlider = $('.slider-range-price'),
+minAmount = $('#minamount'),
+maxAmount = $('#maxamount'),
+minPrice = priceRangeSlider.data('min'),
+maxPrice = priceRangeSlider.data('max'),
+minValue = priceRangeSlider.data('min-value') !== '' ? priceRangeSlider.data('min-value') : minPrice,
+maxValue = priceRangeSlider.data('max-value') !== '' ? priceRangeSlider.data('max-value') : maxPrice;
+priceRangeSlider.slider({
+    range: true,
+    min: minPrice,
+    max: maxPrice,
+    values: [minPrice, maxPrice],
+    slide: function(event, ui) {
+        minAmount.val(ui.values[0]);
+        maxAmount.val(ui.values[1]);
+    }
+});
+minAmount.val(priceRangeSlider.slider("values", 0));
+maxAmount.val(priceRangeSlider.slider("values", 1));
+
+
 
 /*---------------------------------------------------
    tooltips

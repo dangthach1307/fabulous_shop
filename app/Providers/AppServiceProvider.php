@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\Blog\BlogRepository;
 use App\Repositories\Blog\BlogRepositoryInterface;
+use App\Repositories\Brand\BrandRepository;
+use App\Repositories\Brand\BrandRepositoryInterface;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Repositories\Product\ProductRepository;
@@ -12,6 +14,8 @@ use App\Repositories\ProductComment\ProductCommentRepository;
 use App\Repositories\ProductComment\ProductCommentRepositoryInterface;
 use App\Services\Blog\BlogService;
 use App\Services\Blog\BlogServiceInterface;
+use App\Services\Brand\BrandService;
+use App\Services\Brand\BrandServiceInterface;
 use App\Services\Category\CategoryService;
 use App\Services\Category\CategoryServiceInterface;
 use App\Services\Product\ProductService;
@@ -27,7 +31,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //category`
+          //Brand
+          $this->app->singleton(
+            BrandRepositoryInterface::class,
+            BrandRepository::class,
+        );
+        $this->app->singleton(
+            BrandServiceInterface::class,
+            BrandService::class,
+        );
+        //category
         $this->app->singleton(
             CategoryRepositoryInterface::class,
             CategoryRepository::class,
