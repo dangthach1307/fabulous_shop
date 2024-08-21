@@ -10,7 +10,7 @@
             @endif
             <div class="mask-shop-white"></div>
             <div class="product-actions">
-                <a href="shopping_cart.html">
+                <a href="javascript:addToCart({{ $product->id }});">
                     <i class="fa fa-cart-plus"></i>
                     <span> Add to cart</span>
                 </a>

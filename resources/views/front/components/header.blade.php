@@ -6,36 +6,36 @@
                     <!-- Header Language -->
                     <div class="col-xs-12 col-sm-4 col-md-6">
                         <div class="welcome-msg">Welcome to our store! </div>
-                        <div class="dropdown jtv-language-box"> <a role="button" data-toggle="dropdown"
-                                data-target="#" class="block-language dropdown-toggle" href="#"> <img
-                                    class="img-responsive" src="images/flag-english.jpg" alt="language">
+                        <div class="dropdown jtv-language-box"> <a role="button" data-toggle="dropdown" data-target="#"
+                                class="block-language dropdown-toggle" href="#"> <img class="img-responsive"
+                                    src="images/flag-english.jpg" alt="language">
                                 English <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a class="selected" href="#"> <img class="img-responsive"
                                             src="images/flag-english.jpg" alt="flag">
                                         <span>English</span></a></li>
-                                <li><a href="#"> <img class="img-responsive"
-                                            src="images/flag-default.jpg" alt="flag">
+                                <li><a href="#"> <img class="img-responsive" src="images/flag-default.jpg"
+                                            alt="flag">
                                         <span>French</span></a></li>
-                                <li><a href="#"> <img class="img-responsive"
-                                            src="images/flag-german.jpg" alt="flag">
+                                <li><a href="#"> <img class="img-responsive" src="images/flag-german.jpg"
+                                            alt="flag">
                                         <span>German</span></a></li>
-                                <li><a href="#"> <img class="img-responsive"
-                                            src="images/flag-brazil.jpg" alt="flag">
+                                <li><a href="#"> <img class="img-responsive" src="images/flag-brazil.jpg"
+                                            alt="flag">
                                         <span>Brazil</span></a></li>
-                                <li><a href="#"> <img class="img-responsive"
-                                            src="images/flag-chile.jpg" alt="flag">
+                                <li><a href="#"> <img class="img-responsive" src="images/flag-chile.jpg"
+                                            alt="flag">
                                         <span>Chile</span></a></li>
-                                <li><a href="#"> <img class="img-responsive"
-                                            src="images/flag-spain.jpg" alt="flag">
+                                <li><a href="#"> <img class="img-responsive" src="images/flag-spain.jpg"
+                                            alt="flag">
                                         <span>Spain</span></a></li>
                             </ul>
                         </div>
                         <!-- End Header Language -->
 
                         <!-- Header Currency -->
-                        <div class="dropdown jtv-currency-box"> <a role="button" data-toggle="dropdown"
-                                data-target="#" class="block-currency dropdown-toggle" href="#"> USD
+                        <div class="dropdown jtv-currency-box"> <a role="button" data-toggle="dropdown" data-target="#"
+                                class="block-currency dropdown-toggle" href="#"> USD
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#"> $ - Dollar </a></li>
@@ -51,15 +51,15 @@
                         <div class="jtv-top-links">
                             <div class="links">
                                 <ul>
-                                    <li><a title="My Account" href="account_page.html"><span
-                                                class="hidden-xs">My Account</span></a>
+                                    <li><a title="My Account" href="account_page.html"><span class="hidden-xs">My
+                                                Account</span></a>
                                     </li>
                                     <li><a title="Wishlist" href="wishlist.html">Wishlist</a></li>
                                     <li><a title="Checkout" href="checkout.html"><span
                                                 class="hidden-xs">Checkout</span></a></li>
                                     <li>
-                                        <div class="dropdown block-company-wrapper hidden-xs"> <a
-                                                role="button" data-toggle="dropdown" data-target="#"
+                                        <div class="dropdown block-company-wrapper hidden-xs"> <a role="button"
+                                                data-toggle="dropdown" data-target="#"
                                                 class="block-company dropdown-toggle" href="#"> More
                                                 <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
@@ -89,76 +89,50 @@
                         <!-- Top Cart -->
                         <div class="mini-cart">
                             <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle">
-                                <a href="shopping_cart.html"> <i class="pe-7s-cart"></i><span
-                                        class="cart_count hidden-xs">2</span><span class="price hidden-xs">My
-                                        Cart / $299.00</span></a>
+                                <a href="shopping_cart.html">
+                                    <i class="pe-7s-cart"></i>
+                                    <span class="cart_count hidden-xs">{{ Cart::count() }}</span>
+                                    <span class="cart_price hidden-xs">My
+                                        Cart / ${{ Cart::total() }}</span>
+                                </a>
                             </div>
                             <div>
                                 <div class="jtv-top-cart-content">
 
                                     <!--block-subtitle-->
                                     <ul class="mini-products-list" id="cart-sidebar">
-                                        <li class="item first">
-                                            <div class="item-inner"> <a class="product-image"
-                                                    title="Product Title Here" href="#"><img
-                                                        class="img-responsive" alt="Product Title Here"
-                                                        src="../images/products/product-fashion-1.jpg"> </a>
-                                                <div class="product-details">
-                                                    <div class="access"><a class="jtv-btn-remove"
-                                                            title="Remove This Item" href="#">Remove</a>
-                                                        <a class="btn-edit" title="Edit item"
-                                                            href="#"><i class="icon-pencil"></i><span
-                                                                class="hidden">Edit item</span></a>
+                                        @foreach (Cart::content() as $cart)
+                                            <li class="item" data-rowId="{{ $cart->rowId }}">
+                                                <div class="item-inner">
+                                                    <a class="product-image" title="{{ $cart->name }}"
+                                                        href="#">
+                                                        <img class="img-responsive" alt="{{ $cart->name }}"
+                                                            src="{{ asset('front/images/products/' . $cart->options->images[0]->path) }}">
+                                                    </a>
+                                                    <div class="product-details">
+                                                        <div class="access">
+                                                            <i class="jtv-btn-remove" title="Remove This Item"
+                                                                onclick="removeCart('{{ $cart->rowId }}')"></i>
+                                                            <a class="btn-edit" title="Edit item" href="#">
+                                                                <i class="icon-pencil"></i>
+                                                                <span class="hidden">Edit item</span>
+                                                            </a>
+                                                        </div>
+                                                        <p class="product-name"><a
+                                                                href="#">{{ $cart->name }}</a> </p>
+                                                        <p><strong>{{ $cart->qty }}</strong> x <span
+                                                                class="price">${{ $cart->price }}</span></p>
                                                     </div>
-                                                    <p class="product-name"><a href="#">Product Title
-                                                            Here</a> </p>
-                                                    <strong>1</strong> x <span class="price">$79.99</span>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-inner"> <a class="product-image"
-                                                    title="Product Title Here" href="single_product.html"><img
-                                                        class="img-responsive" alt="Product Title Here"
-                                                        src="../images/products/product-fashion-1.jpg"> </a>
-                                                <div class="product-details">
-                                                    <div class="access"><a class="jtv-btn-remove"
-                                                            title="Remove This Item" href="#">Remove</a>
-                                                        <a class="btn-edit" title="Edit item"
-                                                            href="#"><i class="icon-pencil"></i><span
-                                                                class="hidden">Edit item</span></a>
-                                                    </div>
-                                                    <p class="product-name"><a href="#">Product Title
-                                                            Here</a> </p>
-                                                    <strong>1</strong> x <span class="price">$88.89</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item last">
-                                            <div class="item-inner"> <a class="product-image"
-                                                    title="Product Title Here" href="single_product.html"><img
-                                                        class="img-responsive" alt="Product Title Here"
-                                                        src="../images/products/product-fashion-1.jpg"> </a>
-                                                <div class="product-details">
-                                                    <div class="access"><a class="jtv-btn-remove"
-                                                            title="Remove This Item" href="#">Remove</a>
-                                                        <a class="btn-edit" title="Edit item"
-                                                            href="#"><i class="icon-pencil"></i><span
-                                                                class="hidden">Edit item</span></a>
-                                                    </div>
-                                                    <p class="product-name"><a href="#">Product Title
-                                                            Here</a> </p>
-                                                    <strong>1</strong> x <span class="price">$85.99</span>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @endforeach
                                     </ul>
 
                                     <!--actions-->
                                     <div class="actions">
                                         <button class="btn-checkout" title="Checkout" type="button"
                                             onClick="checkout.html"><span>Checkout</span> </button>
-                                        <a href="shopping_cart.html" class="view-cart"><span>View
+                                        <a href="{{route('cart.index')}}" class="view-cart"><span>View
                                                 Cart</span></a>
                                     </div>
                                 </div>
@@ -172,17 +146,16 @@
                     </div>
                     <!-- Header Logo -->
                     <div class="logo"> <a title="eCommerce" href="{{ route('home') }}"><img
-                                class="img-responsive" alt="eCommerce"
-                                src="{{ asset('front/images/logo.png') }}"> </a> </div>
+                                class="img-responsive" alt="eCommerce" src="{{ asset('front/images/logo.png') }}">
+                        </a> </div>
                     <!-- End Header Logo -->
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 hidden-xs">
                     <div class="search-box">
                         <form action="shop" method="GET" id="search_mini_form" name="Categories">
-                            <input type="text" placeholder="Search for products..." maxlength="70"
-                                name="search" id="search" value="{{request('search')}}">
-                            <button type="button" class="search-btn-bg"><i
-                                    class="pe-7s-search"></i>&nbsp;</button>
+                            <input type="text" placeholder="Search for products..." maxlength="70" name="search"
+                                id="search" value="{{ request('search') }}">
+                            <button type="button" class="search-btn-bg"><i class="pe-7s-search"></i>&nbsp;</button>
                         </form>
                     </div>
                 </div>

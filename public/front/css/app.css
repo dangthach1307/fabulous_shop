@@ -826,7 +826,7 @@ ul.currencies_list li a:hover {
 .jtv-top-cart-box .price {
 	padding-left: 0px;
 }
-.mini-cart .dropdown-toggle .price {
+.mini-cart .dropdown-toggle .cart_price {
 	vertical-align: 6px;
 }
 .jtv-top-cart-box .product-details .price {
@@ -903,10 +903,12 @@ ul.currencies_list li a:hover {
 	margin: 0;
 }
 .jtv-top-cart-content .empty {
+    width: 310px;
 	padding: 10px;
 	color: #191919;
 }
 .jtv-top-cart-content {
+    width: 310px;
 	display: none;
 	position: absolute;
 	top: 49px;
@@ -947,7 +949,7 @@ ul#cart-sidebar {
 }
 /* top cart  */
 .jtv-top-cart-content li.item {
-	width: 290px;
+	width: 300px;
 	margin: 0px 0px 12px;
 	border-bottom: 2px #eee solid;
 	display: inline-block;
@@ -984,8 +986,8 @@ ul#cart-sidebar {
 	color: #339900;
 }
 .jtv-top-cart-content .actions {
-	padding: 20px;
-	margin: 0px 0px 15px 0px;
+	padding: 15px;
+	margin: 0px 0px 10px 0px;
 	overflow: hidden;
 	padding-top: 0px;
 	padding-bottom: 10px
@@ -1003,7 +1005,7 @@ ul#cart-sidebar {
 background:#f6f6f6
 }
 .jtv-btn-remove {
-	background-image: url(../front/images/btn_remove.png);
+	background-image: url(../images/btn_remove.png);
 	margin: 0px 0 0 5px;
 }
 .jtv-btn-remove:hover, .jtv-btn-remove:focus {
@@ -4178,7 +4180,7 @@ figure.effect p {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-image: url(../front/images/header-shop-men.jpg);
+	background-image: url(../images/header-shop-men.jpg);
 	background-position-x: 50%;
 }
 .shop_header.has_big_img {
@@ -4204,7 +4206,7 @@ figure.effect p {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(0,0,0,0.3) url(../front/images/category-img-overlay.png) repeat top left;
+	background: rgba(0,0,0,0.3) url(../images/category-img-overlay.png) repeat top left;
 }
 /*------- 18. Sidebar ---------*/
 
@@ -6593,12 +6595,12 @@ button.button.submit:before {
 }
 .jtv-cart-summary .qty input {
 	text-align: center;
-	max-width: 64px;
+	max-width: 100px;
 	margin: 0 auto;
 	border-radius: 0px;
 	border: 1px solid #eaeaea;
 	box-shadow: none;
-	padding: 2px 0px;
+	/* padding: px 0px; */
 	font-weight: 500;
 }
 .jtv-cart-summary .qty a {
@@ -6617,10 +6619,10 @@ button.button.submit:before {
 	text-align: center;
 }
 .jtv-cart-summary .action a {
-	background: url("../front/images/delete_icon.png") no-repeat center center;
+	background: url("../images/delete_icon.png") no-repeat center center;
 	font-size: 0;
-	height: 9px;
-	width: 9px;
+	height: 30px;
+	width: 30px;
 	display: inline-block;
 	line-height: 24px;
 }
