@@ -5,7 +5,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('front/css/rating-css.css') }}">
 @endsection
-
+@section('body_class','single-product-page')
 @section('body')
 
     <!-- Breadcrumbs -->
