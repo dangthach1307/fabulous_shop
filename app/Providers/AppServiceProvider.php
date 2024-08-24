@@ -8,6 +8,10 @@ use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Brand\BrandRepositoryInterface;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Repositories\Order\OrderRepository;
+use App\Repositories\Order\OrderRepositoryInterface;
+use App\Repositories\Orderdetail\OrderdetailRepository;
+use App\Repositories\Orderdetail\OrderdetailRepositoryInterface;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Product\ProductRepositoryInterface;
 use App\Repositories\ProductComment\ProductCommentRepository;
@@ -18,6 +22,10 @@ use App\Services\Brand\BrandService;
 use App\Services\Brand\BrandServiceInterface;
 use App\Services\Category\CategoryService;
 use App\Services\Category\CategoryServiceInterface;
+use App\Services\Order\OrderService;
+use App\Services\Order\OrderServiceInterface;
+use App\Services\Orderdetail\OrderdetailService;
+use App\Services\Orderdetail\OrderdetailServiceInterface;
 use App\Services\Product\ProductService;
 use App\Services\Product\ProductServiceInterface;
 use App\Services\ProductComment\ProductCommentService;
@@ -31,8 +39,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-          //Brand
-          $this->app->singleton(
+        //Brand
+        $this->app->singleton(
             BrandRepositoryInterface::class,
             BrandRepository::class,
         );
@@ -75,6 +83,24 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             BlogServiceInterface::class,
             BlogService::class,
+        );
+        //Order
+        $this->app->singleton(
+            OrderRepositoryInterface::class,
+            OrderRepository::class,
+        );
+        $this->app->singleton(
+            OrderServiceInterface::class,
+            OrderService::class,
+        );
+         //Orderdetail
+         $this->app->singleton(
+            OrderdetailRepositoryInterface::class,
+            OrderdetailRepository::class,
+        );
+        $this->app->singleton(
+            OrderdetailServiceInterface::class,
+            OrderdetailService::class,
         );
     }
 

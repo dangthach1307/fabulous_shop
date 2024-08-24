@@ -131,7 +131,7 @@
                                     <!--actions-->
                                     <div class="actions">
                                         <button class="btn-checkout" title="Checkout" type="button"
-                                            onClick="checkout.html"><span>Checkout</span> </button>
+                                            onclick="window.location='{{ route('checkout.index') }}'"><span>Checkout</span> </button>
                                         <a href="{{route('cart.index')}}" class="view-cart"><span>View
                                                 Cart</span></a>
                                     </div>

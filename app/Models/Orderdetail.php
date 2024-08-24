@@ -10,7 +10,7 @@ class Orderdetail extends Model
     use HasFactory;
     protected $table = "order_details";
     protected $primary = "id";
-    protected $guard = [];
+    protected $guarded = [];
 
     public function order()
     {
