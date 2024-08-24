@@ -10,7 +10,20 @@ class Order extends Model
     use HasFactory;
     protected $table = "orders";
     protected $primary = "id";
-    protected $guard = [];
+    protected $guarded = [];
+
+    // protected $fillable = [
+    //     "first_name",
+    //     "last_name",
+    //     "country",
+    //     "street_address",
+    //     "postcode_zip",
+    //     "town_city",
+    //     "email",
+    //     "phone",
+    //     "payment_type",
+    //     "status",
+    // ];
 
     public function orderDetails()
     {

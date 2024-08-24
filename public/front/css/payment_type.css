@@ -1,0 +1,55 @@
+/* Định dạng cho ul chứa các lựa chọn thanh toán */
+.payment_check {
+    list-style: none; /* Loại bỏ dấu chấm đầu dòng mặc định */
+    padding: 0; /* Loại bỏ khoảng cách padding mặc định */
+    margin: 0; /* Loại bỏ khoảng cách margin mặc định */
+}
+
+/* Định dạng cho các phần tử li */
+.payment_check li {
+    margin-bottom: 10px; /* Khoảng cách giữa các phần tử li */
+}
+
+/* Định dạng cho các label */
+.payment_check label {
+    display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử bên trong */
+    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+    cursor: pointer; /* Hiển thị con trỏ chuột khi di chuột qua label */
+}
+
+/* Định dạng cho các phần tử input radio */
+.payment_check input[type="radio"] {
+    opacity: 0; /* Ẩn phần tử radio button gốc */
+    position: absolute; /* Đưa phần tử ra khỏi luồng tài liệu */
+}
+
+/* Định dạng cho checkmark (hiển thị radio button như checkbox) */
+.checkmark {
+    display: inline-block; /* Đặt nó bên cạnh văn bản */
+    width: 20px; /* Chiều rộng của checkmark */
+    height: 20px; /* Chiều cao của checkmark */
+    border: 2px solid #007bff; /* Đường viền của checkmark */
+    border-radius: 4px; /* Tạo góc bo tròn cho checkmark */
+    background-color: #fff; /* Màu nền của checkmark */
+    position: relative; /* Để kiểm soát vị trí của dấu tích */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Hiệu ứng khi radio button được chọn */
+input[type="radio"]:checked + .checkmark {
+    background-color: #007bff; /* Màu nền của checkmark khi được chọn */
+}
+
+/* Hiệu ứng dấu tích khi radio button được chọn */
+input[type="radio"]:checked + .checkmark::after {
+    content: ""; /* Tạo nội dung cho dấu tích */
+    position: absolute; /* Đặt dấu tích vào vị trí chính xác */
+    left: 5px; /* Khoảng cách từ trái bên trong checkmark */
+    top: 2px; /* Khoảng cách từ trên bên trong checkmark */
+    width: 6px; /* Chiều rộng của dấu tích */
+    height: 12px; /* Chiều cao của dấu tích */
+    border: solid #fff; /* Màu sắc của dấu tích */
+    border-width: 0 2px 2px 0; /* Định dạng đường viền của dấu tích */
+    transform: rotate(45deg); /* Xoay dấu tích */
+}
