@@ -7620,59 +7620,144 @@ a.button.wishlist, a:hover.button.wishlist {
 	font-size: 22px;
 }
 /* 32. Account Login  */
-.account-login {
-	margin: 15px 0px 20px;
-	overflow: hidden;
-	padding: 10px 0px;
+.login-container {
+    margin: 10px auto; /* Căn giữa theo chiều ngang */
+    max-width: 600px; /* Giới hạn chiều rộng nếu cần */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Thêm bóng nhẹ cho phần tử */
+    background-color: #fff; /* Nền trắng cho phần tử */
+    border-radius: 8px; /* Bo góc cho phần tử */
 }
+
+.login-content {
+    padding: 20px;
+}
+
+
 .account-login .form-list input.input-text {
-	border: 1px solid #f0f0f0;
-	padding: 10px;
-	width: 80%;
-	margin-top: 5px;
-	outline: none;
-	margin-bottom: 10px;
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+    width: 100%; /* Chiếm hết chiều rộng phần tử chứa */
+    margin-top: 5px;
+    outline: none;
+    margin-bottom: 10px;
 }
-.account-login .col2-set .col-1 {
-	float: left;
-	padding-bottom: 0;
-	padding: 0px;
-	text-align: left;
-	width: 49%;
-	min-height: 362px;
-	border-right: 1px solid #eaeaea;
-	padding: 25px 25px 0 0;
-	margin-bottom: 15px;
-}
+
+
+.account-login .col2-set .col-1,
 .account-login .col2-set .col-2 {
-	float: right;
-	padding-bottom: 0;
-	padding: 0 0 0 55px;
-	text-align: left;
-	width: 48%;
-	padding: 25px 0;
-	margin-bottom: 25px;
+    width: 100%; /* Chiếm hết chiều rộng phần tử chứa */
+    padding: 0;
+    margin: 0;
+    border: none; /* Loại bỏ border nếu có */
 }
+
+.account-login .col2-set .col-1 {
+    padding-right: 0; /* Loại bỏ padding-right */
+}
+
+.account-login .col2-set .col-2 {
+    padding-left: 0; /* Loại bỏ padding-left */
+}
+
 .account-login strong {
-	color: #000;
-	margin-bottom: 15px;
+    color: #000;
+    margin-bottom: 15px;
 }
+
 .account-login .content {
-	margin-top: 8px;
-	padding-top: 12px;
+    margin-top: 8px;
+    padding-top: 12px;
 }
+
 .account-login .content p {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
+
 .account-login .content p.required {
+    margin-top: 15px; /* Thêm khoảng cách nếu cần */
 }
+
 .account-login .content .form-list label {
-	color: #191919;
-	margin-bottom: 5px;
+    color: #191919;
+    margin-bottom: 5px;
 }
+
 .required {
-	color: #ff0000;
+    color: #ff0000;
 }
+
+/* 32. Account Register */
+
+/* Căn giữa nội dung bên trong .account-register */
+.register-container {
+    margin: 10px auto; /* Căn giữa theo chiều ngang */
+    max-width: 600px; /* Giới hạn chiều rộng nếu cần */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Thêm bóng nhẹ cho phần tử */
+    background-color: #fff; /* Nền trắng cho phần tử */
+    border-radius: 8px; /* Bo góc cho phần tử */
+}
+
+.register-content {
+    padding: 20px;
+}
+
+.account-register .form-list input.input-text {
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+    width: 100%; /* Chiếm hết chiều rộng phần tử chứa */
+    margin-top: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.account-register .col2-set .col-1,
+.account-register .col2-set .col-2 {
+    width: 100%; /* Chiếm hết chiều rộng phần tử chứa */
+    padding: 0;
+    margin: 0;
+    border: none; /* Loại bỏ border nếu có */
+}
+
+.account-register .col2-set .col-1 {
+    padding-right: 0; /* Loại bỏ padding-right */
+}
+
+.account-register .col2-set .col-2 {
+    padding-left: 0; /* Loại bỏ padding-left */
+}
+
+.account-register strong {
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.account-register .content {
+    margin-top: 8px;
+    padding-top: 12px;
+}
+
+.account-register .content p {
+    margin-bottom: 10px;
+}
+
+.account-register .content p.required {
+    margin-top: 15px; /* Thêm khoảng cách nếu cần */
+}
+
+.account-register .content .form-list label {
+    color: #191919;
+    margin-bottom: 5px;
+}
+
+.required {
+    color: #ff0000;
+}
+
+
+
+
 /* 33. 404 Page */
 
 .content-wrapper {

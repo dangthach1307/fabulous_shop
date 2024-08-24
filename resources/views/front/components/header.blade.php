@@ -51,10 +51,9 @@
                         <div class="jtv-top-links">
                             <div class="links">
                                 <ul>
-                                    <li><a title="My Account" href="account_page.html"><span class="hidden-xs">My
-                                                Account</span></a>
-                                    </li>
-                                    <li><a title="Wishlist" href="wishlist.html">Wishlist</a></li>
+
+
+                                    {{-- <li><a title="Wishlist" href="wishlist.html">Wishlist</a></li>
                                     <li><a title="Checkout" href="checkout.html"><span
                                                 class="hidden-xs">Checkout</span></a></li>
                                     <li>
@@ -71,9 +70,21 @@
                                                 <li><a href="#">Advanced Search </a></li>
                                             </ul>
                                         </div>
-                                    </li>
-                                    <li><a href="account_page.html"><span class="hidden-xs">Log In</span></a>
-                                    </li>
+                                    </li> --}}
+                                    @if (Auth::check())
+                                        <li>
+                                            <a title="My Account" href="account_page.html"><span
+                                                    class="hidden-xs"><i class="fa fa-user"></i> {{ Auth::user()->last_name . ' ' . Auth::user()->first_name }}</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="{{ route('account.logout') }}"> <span class="hidden-xs">
+                                                    Logout</span></a></li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('account.login') }}"><span class="hidden-xs">Log
+                                                    In</span></a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -131,8 +142,9 @@
                                     <!--actions-->
                                     <div class="actions">
                                         <button class="btn-checkout" title="Checkout" type="button"
-                                            onclick="window.location='{{ route('checkout.index') }}'"><span>Checkout</span> </button>
-                                        <a href="{{route('cart.index')}}" class="view-cart"><span>View
+                                            onclick="window.location='{{ route('checkout.index') }}'"><span>Checkout</span>
+                                        </button>
+                                        <a href="{{ route('cart.index') }}" class="view-cart"><span>View
                                                 Cart</span></a>
                                     </div>
                                 </div>

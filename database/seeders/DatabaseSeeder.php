@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
                 'postcode_zip' => 'Postcode Zip',
                 'town_city' => 'Town City',
                 'avatar' => null,
-                'level' => 0,
+                'level' => 2,
                 'status' => 1,
                 'description' => null,
                 'created_at' => now(),
