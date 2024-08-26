@@ -53,3 +53,23 @@ input[type="radio"]:checked + .checkmark::after {
     border-width: 0 2px 2px 0; /* Định dạng đường viền của dấu tích */
     transform: rotate(45deg); /* Xoay dấu tích */
 }
+
+
+.checkout-content {
+    border: 1px solid #ccc; /* Thay đổi màu sắc và độ dày của khung tùy ý */
+    padding: 10px; /* Khoảng cách giữa nội dung và viền khung */
+    text-align: center; /* Căn giữa nội dung bên trong khung */
+    width: 100%;
+}
+.checkout-page .row {
+    display: flex; /* Sử dụng Flexbox để căn giữa các cột */
+    justify-content: center; /* Căn giữa các cột theo chiều ngang */
+    gap:10px;
+}
+.col-md-6 {
+    display: flex; /* Sử dụng Flexbox để căn giữa nội dung trong mỗi cột */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-bottom: 10px; /* Khoảng cách giữa các hàng nếu có nhiều hàng */
+
+}

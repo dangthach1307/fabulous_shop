@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Services\Order\OrderServiceInterface;
 use App\Services\Orderdetail\OrderdetailServiceInterface;
+use App\Utilities\Constant;
 use App\Utilities\vnpay;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -31,7 +32,9 @@ class CheckoutController extends Controller
     public function addOrder(Request $request)
     {
         //adding order
-        $order = $this->orderService->create($request->all());
+        $data= $request->all();
+        $data['status']=Constant::order_status_ReceivieOrder;
+        $order = $this->orderService->create($data);
 
         //adding order detail
         $carts = Cart::content();
@@ -81,6 +84,9 @@ class CheckoutController extends Controller
         if ($vnp_ResponseCode != null) {
             //Payment success
             if ($vnp_ResponseCode == '00') {
+                $this->orderService->update([
+                    'status' => Constant::order_status_Paid,
+                ], $vnp_TnRef);
                 //send email
                 $order = $this->orderService->find($vnp_TnRef);
                 $total = Cart::total();

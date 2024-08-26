@@ -22,16 +22,22 @@ class CreateUsersTable extends Migration
 
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('country');
-            $table->string('street_address');
-            $table->string('postcode_zip');
-            $table->string('town_city');
+            $table->string('country')->nullable();
+
+            $table->string('company_name')->nullable();
+            $table->string('street_address')->nullable();
+            $table->string('postcode_zip')->nullable();
+            $table->string('town_city')->nullable();
+            $table->string('phone');
 
             $table->rememberToken();
 
             $table->string('avatar')->nullable();
             $table->tinyInteger('level');
             $table->tinyInteger('status')->default(1);
+
+
+
             $table->text('description')->nullable();
 
             $table->timestamps();
