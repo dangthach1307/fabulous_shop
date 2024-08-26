@@ -73,9 +73,16 @@
                                     </li> --}}
                                     @if (Auth::check())
                                         <li>
-                                            <a title="My Account" href="account_page.html"><span
-                                                    class="hidden-xs"><i class="fa fa-user"></i> {{ Auth::user()->last_name . ' ' . Auth::user()->first_name }}</span>
-                                            </a>
+                                            <div class="dropdown block-company-wrapper hidden-xs">
+                                                <a role="button" data-toggle="dropdown" data-target="#"
+                                                    class="block-company dropdown-toggle" href="#"><i
+                                                        class="fa fa-user"></i>
+                                                    {{ Auth::user()->last_name . ' ' . Auth::user()->first_name }}
+                                                    <span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ route('account.my-order') }}"> History Orders</a></li>
+                                                </ul>
+                                            </div>
                                         </li>
                                         <li><a href="{{ route('account.logout') }}"> <span class="hidden-xs">
                                                     Logout</span></a></li>
@@ -115,8 +122,7 @@
                                         @foreach (Cart::content() as $cart)
                                             <li class="item" data-rowId="{{ $cart->rowId }}">
                                                 <div class="item-inner">
-                                                    <a class="product-image" title="{{ $cart->name }}"
-                                                        href="#">
+                                                    <a class="product-image" title="{{ $cart->name }}" href="#">
                                                         <img class="img-responsive" alt="{{ $cart->name }}"
                                                             src="{{ asset('front/images/products/' . $cart->options->images[0]->path) }}">
                                                     </a>
