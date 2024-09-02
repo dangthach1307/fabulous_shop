@@ -39,4 +39,8 @@ class BaseService implements ServiceInterface
     {
         return $this->repository->destroy($id);
     }
+    public function searchAndPaginate($searchBy, $keyword, $perPage = 5, $searchColumns = null)
+    {
+        return $this->repository->searchAndPaginate($searchBy, $keyword, $perPage, $searchColumns);
+    }
 }

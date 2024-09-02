@@ -2,7 +2,7 @@
     <div class="item-img">
         <div class="item-img-info">
             <img class="img-responsive" alt="{{ $product->name }}"
-                src="{{ asset('front/images/products/' . $product->productImages[0]->path) }}">
+                src="{{ asset('front/images/products/' . $product->productImages[0]->path ?? '') }}">
             <a href="{{ route('shop.show', $product->id) }}" class="product-link">
             </a>
             @if ($product->discount != null)

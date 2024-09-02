@@ -10,7 +10,17 @@ class Brand extends Model
     use HasFactory;
     protected $table = "brands";
     protected $primary = "id";
-    protected $guard = [];
+    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'slug',
+        'image',
+        'image',
+        'meta_description',
+        'meta_keywords',
+        'tag',
+        'status',
+    ];
 
     public function products()
     {

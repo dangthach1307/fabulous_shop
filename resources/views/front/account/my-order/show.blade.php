@@ -14,7 +14,7 @@
                 <section class="col-sm-12 col-xs-12">
                     <div class="col-main">
                         <div class="page-title">
-                            <h1>Checkout</h1>
+                            <h4><a href="{{route('account.my-order')}}"> Go back</a></h4>
                         </div>
                         <div class="page-content checkout-page">
                             <div class="row">
@@ -96,10 +96,6 @@
                                                 <input class="input form-control" type="text" name="phone" readonly
                                                     id="phone" value="{{ $order->phone }}">
                                             </div>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" name="new_account" id="new_account">
-                                            <label for="new_account">Create new account?</label>
                                         </div>
                                     </div>
                                 </div>

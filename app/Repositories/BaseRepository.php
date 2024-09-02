@@ -139,4 +139,26 @@ abstract class BaseRepository implements RepositoryInterface
 
         return false;
     }
+
+
+    public function searchAndPaginate($searchBy, $keyword, $perPage = 5, $searchColumns = null)
+    {
+        if (is_null($searchColumns)) {
+            $searchColumns = [$searchBy];
+        }
+
+        $query = $this->model->newQuery();
+
+        // Xây dựng điều kiện tìm kiếm với các cột được chỉ định.
+        $query->where(function ($query) use ($keyword, $searchColumns) {
+            foreach ($searchColumns as $column) {
+                $query->orWhere($column, 'like', '%' . $keyword . '%');
+            }
+        });
+
+        return $query
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage)
+            ->appends(['search' => $keyword]);
+    }
 }

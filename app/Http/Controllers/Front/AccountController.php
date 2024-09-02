@@ -34,7 +34,8 @@ class AccountController extends Controller
         $remember = $request->remember;
 
         if (Auth::attempt($credentials, $remember)) {
-            return redirect()->route('home');
+            // return redirect()->route('home');
+            return redirect()->intended('/');//default: home
         } else {
             return back()->with('notification', 'ERROR: Wrong email or password');
         }

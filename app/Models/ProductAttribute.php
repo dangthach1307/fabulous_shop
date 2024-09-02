@@ -10,7 +10,7 @@ class ProductAttribute extends Model
     use HasFactory;
     protected $table = "product_attributes";
     protected $primary = "id";
-    protected $guard = [];
+    protected $guarded = [];
 
     public function product(){
         return $this->belongsTo(Product::class,'product_id','id');
