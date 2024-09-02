@@ -36,8 +36,8 @@
                                         <div class="new-label new-top-left"> New </div>
                                         <div class="product-image">
                                             <div class="product-full"> <img class="img-responsive" id="product-zoom"
-                                                    src="{{ asset('front/images/products/' . $product->productImages[0]->path) }}"
-                                                    data-zoom-image="{{ asset('front/images/products/' . $product->productImages[0]->path) }}"
+                                                    src="{{ asset('front/images/products/' . $product->productImages[0]->path ?? '') }}"
+                                                    data-zoom-image="{{ asset('front/images/products/' . $product->productImages[0]->path ?? '') }}"
                                                     alt="product-image" /> </div>
                                             <div class="more-views">
                                                 <div class="slider-items-products">
